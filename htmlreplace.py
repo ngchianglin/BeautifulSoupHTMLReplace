@@ -28,10 +28,11 @@
 # directory recursively. 
 # The script doesn't follow symlinks.  
 # It uses BeautifulSoup 4 library with the lxml parser. 
-# The html files is assumed to be utf-8 encoded. 
+# The html files are assumed to be utf-8 encoded and well formed.  
 # 
 # Warning: The script replaces/modifies existing files. 
-#          To prevent data loss. Always backup your files first ! 
+#          To prevent data corruption of data loss. 
+#          Always backup your files first ! 
 #
 # 
 # Ng Chiang Lin
@@ -45,7 +46,7 @@ from bs4 import BeautifulSoup
 matchtext = "2018"
 
 # Text to replace
-replacetext = "&copy; 2019 Ng Chiang Lin, 强林"
+replacetext = "© 2019 Ng Chiang Lin, 强林"
 
 # Directory containing the html files
 homepagedir = "HomePage"
@@ -82,7 +83,7 @@ def updateFile(infile):
                 for child in footer:
                     if matchtext in child:
                         child.replace_with(replacetext)
-                        output = soup.encode(formatter=None)
+                        output = soup.encode(formatter="html5")
                         writeOutput(infile, output)
                         os.replace(infile + ".new", infile)
 
