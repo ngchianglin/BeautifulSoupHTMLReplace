@@ -84,6 +84,12 @@ def updateFile(infile):
                     if matchtext in child:
                         child.replace_with(replacetext)
                         output = soup.encode(formatter="html5")
+                        #quick hack to replace async="" with async
+                        #in javascript tag
+                        #for my use case this works but for complicated
+                        #html may require other solutions
+                        output = output.decode("utf-8")
+                        output = output.replace('async=""','async')
                         writeOutput(infile, output)
                         os.replace(infile + ".new", infile)
 
@@ -101,7 +107,8 @@ def writeOutput(infile, output):
         
         try:
             of = open(tempname, mode='w', encoding='utf-8') 
-            of.write(output.decode("utf-8"))
+            #of.write(output.decode("utf-8"))
+            of.write(output)
         finally:
             of.close()
     
