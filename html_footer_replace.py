@@ -70,7 +70,6 @@ def processDir(dir):
 
 
 def updateFile(infile):
-    fp = open(infile, mode='r', encoding='utf-8')
 
     try:
 
