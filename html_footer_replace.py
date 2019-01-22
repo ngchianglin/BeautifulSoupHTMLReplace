@@ -95,8 +95,8 @@ def updateFile(infile):
         finally:    
             fp.close()
 
-    except err:
-           print("Warning: Exception occurred: ", infile, " : " , err)  
+    except: 
+           print("Warning: Exception occurred: ", infile)  
 
 
 def writeOutput(infile, output):
@@ -111,8 +111,8 @@ def writeOutput(infile, output):
         finally:
             of.close()
     
-    except err:
-        print("Warning: Exception occurred: ", infile, " : ", err)
+    except: 
+        print("Warning: Exception occurred: ", infile)
 
 
 
