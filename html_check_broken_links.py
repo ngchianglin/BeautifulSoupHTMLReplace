@@ -153,8 +153,8 @@ def processHTMLDoc(filename, path):
         finally:    
             fp.close()
 
-    except err:
-           print("Warning: Exception occurred: ", path, " : " , err)  
+    except:
+           print("Warning: Exception occurred: ", path)  
 
 
 
